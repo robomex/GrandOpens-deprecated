@@ -16,6 +16,8 @@ class VenueViewController: JSQMessagesViewController {
     
     var venueID: String?
     
+    var messageListener: MessageListener?
+    
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleBlueColor())
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
     
@@ -46,18 +48,21 @@ class VenueViewController: JSQMessagesViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        self.tabBarController?.tabBar.hidden = false
+    override func viewWillAppear(animated: Bool) {
+        if let id = venueID {
+            messageListener = MessageListener(venueID: id, startDate: NSDate(), callback: {
+                message in
+                self.messages.append(JSQMessage(senderId: message.senderID, senderDisplayName: message.senderID, date: message.date, text: message.message))
+                self.finishReceivingMessage()
+            })
+        }
     }
     
-//    
-//    func sendersDisplayName() -> String! {
-//        return currentUser()!.name
-//    }
-//    
-//    func sendersId() -> String! {
-//        return currentUser()!.id
-//    }
+    override func viewWillDisappear(animated: Bool) {
+        self.tabBarController?.tabBar.hidden = false
+        
+        messageListener?.stop()
+    }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData! {
         

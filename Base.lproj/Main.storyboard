@@ -94,8 +94,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Pat-84-4iT" kind="relationship" relationship="viewControllers" id="90Z-EX-SBZ"/>
                         <segue destination="etH-Qb-0nd" kind="relationship" relationship="viewControllers" id="3oi-7h-tzz"/>
+                        <segue destination="Pat-84-4iT" kind="relationship" relationship="viewControllers" id="90Z-EX-SBZ"/>
                         <segue destination="Q3n-Mz-lF3" kind="relationship" relationship="viewControllers" id="4no-2Q-lfM"/>
                     </connections>
                 </tabBarController>

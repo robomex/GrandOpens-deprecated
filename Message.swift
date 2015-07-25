@@ -7,11 +7,31 @@
 //
 
 import Foundation
+import Parse
 
 struct Message {
     let message: String
     let senderID: String
     let date: NSDate
+}
+
+class MessageListener {
+    var currentHandle: UInt?
+    
+    init (venueID: String, startDate: NSDate, callback: (Message) -> ()) {
+        let handle = ref.childByAppendingPath(venueID).queryStartingAtValue(dateFormatter().stringFromDate(startDate)).observeEventType(FEventType.ChildAdded, withBlock: {
+            snapshot in
+            let message = snapshotToMessage(snapshot)
+            callback(message)
+        })
+        self.currentHandle = handle
+    }
+    func stop() {
+        if let handle = currentHandle {
+            ref.removeObserverWithHandle(handle)
+            currentHandle = nil
+        }
+    }
 }
 
 private let ref = Firebase(url: "https://grandopens.firebaseio.com/messages")
