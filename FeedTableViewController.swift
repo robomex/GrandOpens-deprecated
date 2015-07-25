@@ -62,7 +62,6 @@ class FeedTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("VenueCell", forIndexPath: indexPath) as! VenueCell
 
         let venue = venues[indexPath.row]
-        
         cell.venueName.text = venue.name
         cell.venueNeighborhood.text = venue.neighborhood
 
@@ -76,7 +75,7 @@ class FeedTableViewController: UITableViewController {
         let venue = venues[indexPath.row]
         vc.venueID = venue.id
         vc.title = venue.name
-        
+        navigationItem.title = ""
         navigationController?.pushViewController(vc, animated: true)
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -119,12 +118,13 @@ class FeedTableViewController: UITableViewController {
 
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        
+
     }
     */
-
 }

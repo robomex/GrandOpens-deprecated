@@ -43,7 +43,7 @@ class VenueViewController: JSQMessagesViewController {
         self.senderId = currentUser()!.id
         self.senderDisplayName = currentUser()!.name
         
-        
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
     
     override func viewWillDisappear(animated: Bool) {
