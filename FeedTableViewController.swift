@@ -22,6 +22,8 @@ class FeedTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         UIApplication.sharedApplication().statusBarStyle = .LightContent
+        
+        self.hidesBottomBarWhenPushed = true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -70,6 +72,14 @@ class FeedTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let vc = VenueViewController()
+        
+        let venue = venues[indexPath.row]
+        vc.venueID = venue.id
+        vc.title = venue.name
+        
+        navigationController?.pushViewController(vc, animated: true)
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }

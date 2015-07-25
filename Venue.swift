@@ -17,7 +17,7 @@ struct Venue {
 
 func fetchVenues (callback: ([Venue]) -> ()) {
     
-    let date = NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: -33, toDate: NSDate(), options: nil)!
+    let date = NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: -47, toDate: NSDate(), options: nil)!
     
     PFQuery(className: "Venue")
         .whereKey("openingDate", greaterThanOrEqualTo: date)
