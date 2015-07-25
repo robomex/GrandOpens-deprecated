@@ -24,6 +24,8 @@ class VenueViewController: JSQMessagesViewController {
         
         // Do any additional setup after loading the view.
         
+        self.tabBarController?.tabBar.hidden = true
+        
         collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
         collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero
         
@@ -43,6 +45,11 @@ class VenueViewController: JSQMessagesViewController {
         
         
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.tabBarController?.tabBar.hidden = false
+    }
+    
 //    
 //    func sendersDisplayName() -> String! {
 //        return currentUser()!.name

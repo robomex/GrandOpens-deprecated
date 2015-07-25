@@ -22,8 +22,6 @@ class FeedTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-        
-        self.hidesBottomBarWhenPushed = true
     }
     
     override func viewWillAppear(animated: Bool) {
