@@ -29,16 +29,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Track statistics around application opens with Parse
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
-        var storyboard = UIStoryboard(name: "Main", bundle: nil)
-        var initialViewController: UIViewController
-        if PFUser.currentUser() != nil {
-            initialViewController = storyboard.instantiateViewControllerWithIdentifier("MainNavController") as! UIViewController
-        }
-        else {
-              initialViewController = storyboard.instantiateViewControllerWithIdentifier("MainNavController") as! UIViewController
-        }
-        self.window?.rootViewController = initialViewController
-        self.window?.makeKeyAndVisible()
+//        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        var initialViewController: UIViewController
+//        if PFUser.currentUser() != nil {
+//            initialViewController = storyboard.instantiateViewControllerWithIdentifier("MainNavController") as! UIViewController
+//        }
+//        else {
+//              initialViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! UIViewController
+//        }
+//        self.window?.rootViewController = initialViewController
+//        self.window?.makeKeyAndVisible()
         
         return true
     }

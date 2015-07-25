@@ -7,3 +7,4 @@
 //
 
 #import "JSQMessagesViewController/JSQMessages.h"
+#import <Firebase/Firebase.h>
