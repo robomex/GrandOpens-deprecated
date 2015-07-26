@@ -16,6 +16,8 @@ class VenueViewController: JSQMessagesViewController {
     
     var venueID: String?
     
+    var messageListener: MessageListener?
+    
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleBlueColor())
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
     
@@ -23,6 +25,8 @@ class VenueViewController: JSQMessagesViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        self.tabBarController?.tabBar.hidden = true
         
         collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
         collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero
@@ -41,16 +45,24 @@ class VenueViewController: JSQMessagesViewController {
         self.senderId = currentUser()!.id
         self.senderDisplayName = currentUser()!.name
         
-        
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
-//    
-//    func sendersDisplayName() -> String! {
-//        return currentUser()!.name
-//    }
-//    
-//    func sendersId() -> String! {
-//        return currentUser()!.id
-//    }
+    
+    override func viewWillAppear(animated: Bool) {
+        if let id = venueID {
+            messageListener = MessageListener(venueID: id, startDate: NSDate(), callback: {
+                message in
+                self.messages.append(JSQMessage(senderId: message.senderID, senderDisplayName: message.senderID, date: message.date, text: message.message))
+                self.finishReceivingMessage()
+            })
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.tabBarController?.tabBar.hidden = false
+        
+        messageListener?.stop()
+    }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData! {
         
