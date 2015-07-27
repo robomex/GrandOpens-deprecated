@@ -46,6 +46,7 @@ class VenueViewController: JSQMessagesViewController {
         self.senderDisplayName = currentUser()!.name
         
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.hidesBarsOnSwipe = true
     }
     
     override func viewWillAppear(animated: Bool) {
