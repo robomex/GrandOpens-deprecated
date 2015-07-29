@@ -37,6 +37,8 @@ class FeedTableViewController: UITableViewController {
             self.venues = venues
             self.tableView.reloadData()
         })
+        
+//        self.navigationController?.navigationBar.frame.origin.y = 0
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,9 +63,9 @@ class FeedTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("VenueCell", forIndexPath: indexPath) as! VenueCell
 
-        let venue = venues[indexPath.row]
-        cell.venueName.text = venue.name
-        cell.venueNeighborhood.text = venue.neighborhood
+        let venueInfo = venues[indexPath.row]
+        cell.venueName.text = venueInfo.name
+        cell.venueNeighborhood.text = venueInfo.neighborhood
 
         return cell
     }
