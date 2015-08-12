@@ -21,6 +21,8 @@ class VenueViewController: JSQMessagesViewController {
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleBlueColor())
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
     
+    var segmentedControl: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,7 +48,15 @@ class VenueViewController: JSQMessagesViewController {
         self.senderDisplayName = currentUser()!.name
         
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationController?.hidesBarsOnSwipe = true
+        
+        let frame = UIScreen.mainScreen().bounds
+        segmentedControl = UISegmentedControl(items: ["Chat", "Details"])
+        segmentedControl.frame = CGRectMake(frame.minX + 100, frame.minY + 70, frame.width - 200, frame.height * 0.04)
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.addTarget(self, action: "venueSegmentedControlAction:", forControlEvents: .ValueChanged)
+        segmentedControl.backgroundColor = UIColor.whiteColor()
+        segmentedControl.tintColor = UIColor(red: 0x9b/255, green: 0x59/255, blue: 0xb6/255, alpha: 1.0)
+        self.view.addSubview(segmentedControl)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -94,5 +104,16 @@ class VenueViewController: JSQMessagesViewController {
         }
         
         finishSendingMessage()
+    }
+    
+    func venueSegmentedControlAction(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 1:
+            let vc = VenueDetailsViewController()
+            vc.title = "test"
+            navigationController?.pushViewController(vc, animated: false)
+        default:
+            return
+        }
     }
 }
