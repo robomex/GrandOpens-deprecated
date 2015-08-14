@@ -37,6 +37,8 @@ class FeedTableViewController: UITableViewController {
             self.venues = venues
             self.tableView.reloadData()
         })
+        
+        self.tabBarController?.tabBar.hidden = false
     }
 
     override func didReceiveMemoryWarning() {
