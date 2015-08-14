@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import JSQMessagesViewController
 
 //let pageController = ViewController(transitionStyle: UIPageViewControllerTransitionStyle.Scroll, navigationOrientation: UIPageViewControllerNavigationOrientation.Horizontal, options: nil)
 
@@ -28,8 +27,9 @@ class VenueViewController: UIPageViewController, UIPageViewControllerDataSource 
         
         view.backgroundColor = UIColor.whiteColor()
         dataSource = self
+        chatVC.venueID = venueID
+//        self.view.resignFirstResponder()
         setViewControllers([chatVC], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
-        
         
         let frame = UIScreen.mainScreen().bounds
         segmentedControl = UISegmentedControl(items: ["Chat", "Details"])
@@ -38,6 +38,7 @@ class VenueViewController: UIPageViewController, UIPageViewControllerDataSource 
         segmentedControl.addTarget(self, action: "venueSegmentedControlAction:", forControlEvents: .ValueChanged)
         segmentedControl.backgroundColor = UIColor.whiteColor()
         segmentedControl.tintColor = UIColor(red: 0x9b/255, green: 0x59/255, blue: 0xb6/255, alpha: 1.0)
+        segmentedControl.layer.cornerRadius = 5
         self.view.addSubview(segmentedControl)
     }
 
