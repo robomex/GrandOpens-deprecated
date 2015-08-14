@@ -70,7 +70,7 @@ class FeedTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let vc = VenueViewController()
+        let vc = VenueViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
         
         let venue = venues[indexPath.row]
         vc.venueID = venue.id
