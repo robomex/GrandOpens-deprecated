@@ -46,10 +46,11 @@ class VenueChatViewController: JSQMessagesViewController {
         self.senderDisplayName = currentUser()!.name
         
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
         if let id = venueID {
             messageListener = MessageListener(venueID: id, startDate: NSDate(), callback: {
                 message in
@@ -60,7 +61,6 @@ class VenueChatViewController: JSQMessagesViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        self.tabBarController?.tabBar.hidden = false
         
         messageListener?.stop()
     }
@@ -95,6 +95,4 @@ class VenueChatViewController: JSQMessagesViewController {
         
         finishSendingMessage()
     }
-    
-
 }
