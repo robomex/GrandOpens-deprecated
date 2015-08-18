@@ -30,6 +30,7 @@ class FeedTableViewController: UITableViewController {
         if let font = UIFont(name: "Muli", size: 26) {
             navigationController!.navigationBar.topItem!.title = "Chicago"
             navigationController!.navigationBar.titleTextAttributes = [NSFontAttributeName: font, NSForegroundColorAttributeName: UIColor.whiteColor()]
+            navigationController!.view.backgroundColor = UIColor.whiteColor()
         }
         
         fetchVenues({
@@ -78,6 +79,7 @@ class FeedTableViewController: UITableViewController {
         vc.venueID = venue.id
         vc.title = venue.name
         navigationItem.title = ""
+        vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
