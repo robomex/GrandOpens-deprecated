@@ -28,7 +28,7 @@ class VenueViewController: UIPageViewController, UIPageViewControllerDataSource 
         view.backgroundColor = UIColor.whiteColor()
         dataSource = self
         chatVC.venueID = venueID
-//        self.view.resignFirstResponder()
+        detailsVC.venueID = venueID
         setViewControllers([chatVC], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
         
         let frame = UIScreen.mainScreen().bounds

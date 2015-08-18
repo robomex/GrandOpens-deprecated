@@ -10,7 +10,7 @@ import UIKit
 
 class VenueDetailsViewController: UIViewController {
 
-    @IBOutlet weak var venueDetailsLabel: UILabel!
+    var venueID: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +18,11 @@ class VenueDetailsViewController: UIViewController {
         // Do any additional setup after loading the view.
 
         view.backgroundColor = UIColor.blueColor()
+        
+        var venueDetailsLabel = UILabel(frame: CGRectMake(0, 0, 200, 21))
+        venueDetailsLabel.center = CGPointMake(160, 284)
+        venueDetailsLabel.text = venueID
+        self.view.addSubview(venueDetailsLabel)
     }
     
     override func didReceiveMemoryWarning() {
