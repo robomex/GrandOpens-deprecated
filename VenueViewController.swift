@@ -59,10 +59,10 @@ class VenueViewController: UIPageViewController, UIPageViewControllerDataSource 
     
     func venueSegmentedControlAction(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
+        case 0:
+            setViewControllers([chatVC], direction: UIPageViewControllerNavigationDirection.Reverse, animated: true, completion: nil)
         case 1:
-            let vc = VenueDetailsViewController()
-            vc.title = "test"
-            navigationController?.pushViewController(vc, animated: false)
+            setViewControllers([detailsVC], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
         default:
             return
         }
