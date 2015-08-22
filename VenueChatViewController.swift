@@ -46,6 +46,10 @@ class VenueChatViewController: JSQMessagesViewController {
         self.senderDisplayName = currentUser()!.name
         
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+
+        automaticallyScrollsToMostRecentMessage = true
+//        self.inputToolbar.loadToolbarContentView()
+//        self.inputToolbar.contentView.rightBarButtonItem = JSQMessagesToolbarButtonFactory.defaultSendButtonItem()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -58,6 +62,7 @@ class VenueChatViewController: JSQMessagesViewController {
                 self.finishReceivingMessage()
             })
         }
+        
     }
     
     override func viewDidAppear(animated: Bool) {
