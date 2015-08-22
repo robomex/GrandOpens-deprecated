@@ -10,7 +10,7 @@ import UIKit
 
 //let pageController = ViewController(transitionStyle: UIPageViewControllerTransitionStyle.Scroll, navigationOrientation: UIPageViewControllerNavigationOrientation.Horizontal, options: nil)
 
-class VenueViewController: UIPageViewController, UIPageViewControllerDataSource {
+class VenueViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 
     var venueID: String?
     
@@ -27,6 +27,7 @@ class VenueViewController: UIPageViewController, UIPageViewControllerDataSource 
         
         view.backgroundColor = UIColor.whiteColor()
         dataSource = self
+        delegate = self
         chatVC.venueID = venueID
         detailsVC.venueID = venueID
         setViewControllers([chatVC], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
@@ -83,6 +84,21 @@ class VenueViewController: UIPageViewController, UIPageViewControllerDataSource 
         switch viewController {
         case chatVC: return detailsVC
         default: return nil
+        }
+    }
+    
+    // MARK: UIPageViewControllerDelegate
+    
+    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
+        
+        if (!completed) {
+            return
+        }
+        
+        if segmentedControl.selectedSegmentIndex == 0 {
+            segmentedControl.selectedSegmentIndex = 1
+        } else if segmentedControl.selectedSegmentIndex == 1 {
+            segmentedControl.selectedSegmentIndex = 0
         }
     }
 }
