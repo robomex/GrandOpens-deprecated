@@ -14,6 +14,8 @@ class VenueViewController: UIPageViewController, UIPageViewControllerDataSource,
 
     var venueID: String?
     
+    var venue: Venue?
+    
     let chatVC = VenueChatViewController()
     
     let detailsVC = VenueDetailsViewController()
@@ -29,7 +31,7 @@ class VenueViewController: UIPageViewController, UIPageViewControllerDataSource,
         dataSource = self
         delegate = self
         chatVC.venueID = venueID
-        detailsVC.venueID = venueID
+        detailsVC.venue = venue
         setViewControllers([chatVC], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
         
         let frame = UIScreen.mainScreen().bounds

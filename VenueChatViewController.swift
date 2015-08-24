@@ -25,8 +25,6 @@ class VenueChatViewController: JSQMessagesViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-
-//        self.tabBarController?.tabBar.hidden = true
         
         collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
         collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero

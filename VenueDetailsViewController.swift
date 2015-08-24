@@ -10,18 +10,16 @@ import UIKit
 
 class VenueDetailsViewController: UIViewController {
 
-    var venueID: String?
+    var venue: Venue?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-
-        view.backgroundColor = UIColor.blueColor()
         
         var venueDetailsLabel = UILabel(frame: CGRectMake(0, 0, 200, 21))
         venueDetailsLabel.center = CGPointMake(160, 284)
-        venueDetailsLabel.text = venueID
+        venueDetailsLabel.text = venue!.name
         self.view.addSubview(venueDetailsLabel)
     }
     

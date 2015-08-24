@@ -76,6 +76,7 @@ class FeedTableViewController: UITableViewController {
         let vc = VenueViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
         
         let venue = venues[indexPath.row]
+        vc.venue = venue
         vc.venueID = venue.id
         vc.title = venue.name
         navigationItem.title = ""
