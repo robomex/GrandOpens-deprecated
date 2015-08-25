@@ -30,6 +30,7 @@ class FeedTableViewController: UITableViewController {
         if let font = UIFont(name: "Muli", size: 26) {
             navigationController!.navigationBar.topItem!.title = "Chicago"
             navigationController!.navigationBar.titleTextAttributes = [NSFontAttributeName: font, NSForegroundColorAttributeName: UIColor.whiteColor()]
+            navigationController!.view.backgroundColor = UIColor.whiteColor()
         }
         
         fetchVenues({
@@ -37,6 +38,8 @@ class FeedTableViewController: UITableViewController {
             self.venues = venues
             self.tableView.reloadData()
         })
+        
+        self.tabBarController?.tabBar.hidden = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,12 +73,14 @@ class FeedTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let vc = VenueViewController()
+        let vc = VenueViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
         
         let venue = venues[indexPath.row]
+        vc.venue = venue
         vc.venueID = venue.id
         vc.title = venue.name
         navigationItem.title = ""
+        vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
