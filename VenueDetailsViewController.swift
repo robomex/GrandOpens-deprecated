@@ -17,9 +17,13 @@ class VenueDetailsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        var venueDetailsLabel = UILabel(frame: CGRectMake(0, 0, 200, 21))
-        venueDetailsLabel.center = CGPointMake(160, 284)
-        venueDetailsLabel.text = venue!.name
+        var venueDetailsLabel = UILabel(frame: CGRectMake(0, 0, 300, 80))
+        venueDetailsLabel.center = CGPointMake(UIScreen.mainScreen().bounds.width/2, 200)
+        venueDetailsLabel.text = venue!.description + " " + venue!.foodType
+        venueDetailsLabel.textAlignment = NSTextAlignment.Center
+        venueDetailsLabel.font = UIFont(name: "Muli", size: 17)
+        venueDetailsLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        venueDetailsLabel.numberOfLines = 3
         self.view.addSubview(venueDetailsLabel)
     }
     
